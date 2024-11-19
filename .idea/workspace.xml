@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0b05a1ac-5a48-4d8a-8e3d-2e58f8ddb4b4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/hospitalApp/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/hospitalApp/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospitalApp/src/app/app.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/hospitalApp/src/app/app.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospitalApp/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/hospitalApp/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospitalApp/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hospitalApp/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hospitalApp/src/assets/.gitkeep" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,11 +29,16 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;danielsan&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Danie\\Desktop\\HospitalProject\\hospitalApp\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="SharedIndexes">
@@ -47,7 +56,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1731546141787</updated>
-      <workItem from="1731546143060" duration="1396000" />
+      <workItem from="1731546143060" duration="1547000" />
+      <workItem from="1731619032960" duration="36000" />
+      <workItem from="1732049407105" duration="1437000" />
     </task>
     <servers />
   </component>
