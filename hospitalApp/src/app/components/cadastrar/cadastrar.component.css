@@ -1,0 +1,141 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f6f6f6;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+}
+
+header {
+  background: #2363571c;
+  width: 100%;
+  height: 101px;
+  opacity: 0px;
+}
+.form-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.form-container-group {
+  padding-left: 20%;
+}
+.form-container {
+  background: #2363571c;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  width: 50%;
+  text-align: center;
+  margin-top: 3rem;
+}
+.account-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.text-intification {
+  text-align: left;
+  font-size: 18px;
+}
+span {
+  font-size: 15px;
+}
+.logo {
+  width: 70px;
+  height: 70px;
+}
+
+.title-header {
+  font-size: 60px;
+  color: #005f4b;
+  font-style: italic;
+  line-height: 71.94px;
+  size: 60px;
+}
+.sub-med{
+  font-size: 60px;
+  color: #000000;
+  font-style: italic;
+  line-height: 71.94px;
+  size: 60px;
+}
+
+.title-p{
+ font-size: 35px;
+  size: 50px;
+  line-height: 59.95px;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+.user-type {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.usuario-button {
+  width: 125px;
+  height: 44px;
+  padding: 10px;
+  background: white;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.form-group input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 1px;
+  width: 209.84px;
+}
+
+input[type="date"] {
+  flex: 1;
+}
+
+input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.form-footer {
+  font-size: 12px;
+  margin-bottom: 20px;
+  color: rgb(14, 12, 12);
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+}
+.submit-button {
+  margin: 2rem;
+}
+.button-footer {
+  width: 221px;
+  padding: 10px;
+  background: #2363571c;
+  color: rgb(14, 12, 12);
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.button-footer:hover {
+  background-color: #1f4b421c;
+}
