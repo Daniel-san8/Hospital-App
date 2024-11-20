@@ -1,3 +1,7 @@
 .mainUsuario {
-  padding-top: 90px;
+  padding: 90px 200px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  gap: 70px;
 }
