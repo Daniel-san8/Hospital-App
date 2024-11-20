@@ -1,28 +1,3 @@
-.headerUsuario {
-  display: flex;
-  justify-content: space-between;
-  background-color: #2363571C;
-}
-
-.logoHeader {
-  width: 105px;
-}
-
-.iconHeader {
-  display: flex;
-  align-items: center;
-  font-size: 60px;
-  margin-left: 140px;
-}
-
-.nameUsuario {
-  display: flex;
-  align-items: center;
-  font-size: 35px;
-  gap: 32px;
-}
-
-.iconSino {
-  width: 50px;
-  margin-right: 25px;
+.mainUsuario {
+  padding-top: 90px;
 }
