@@ -31,4 +31,5 @@
 .doctor-date {
   display: flex;
   gap: 35px;
+  padding-bottom: 15px;
 }
