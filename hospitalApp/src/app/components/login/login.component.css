@@ -1,12 +1,3 @@
-/* Reset básico */
-body, h1, h2, p, form, label, input, button {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
-/* Estilo da página */
 body {
   display: flex;
   justify-content: center;
