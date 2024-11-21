@@ -1,19 +1,33 @@
-<div class="login-container">
-  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-    <h2>Login</h2>
-
-    <div>
-      <label for="email">Email</label>
-      <input id="email" type="email" formControlName="email" required />
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Login - VitalMed</title>
+    <link rel="stylesheet" href="./login.component.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <img src="../../../assets/LogoHealth.png" alt="">
+            <h1>Vital<span class="colorSpan">Med</span></h1>
+        </div>
+        <div class="login-box">
+            <h2>Faça login em sua conta</h2>
+            <form>
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" required>
+                
+                
+            </form>
+            
+            
+        </div>
+        <button type="submit">Entrar</button>
     </div>
-
-    <div>
-      <label for="password">Senha</label>
-      <input id="password" type="password" formControlName="password" required />
-    </div>
-
-    <button type="submit" [disabled]="loginForm.invalid">Entrar</button>
-
-    </div>
-  </form>
-</div>
+    
+</body>
+</html>
