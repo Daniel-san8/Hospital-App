@@ -15,3 +15,8 @@
 .is-valid {
   border: 2px solid green;
 }
+
+input {
+  outline: none;
+  border: 2px solid transparent;
+}

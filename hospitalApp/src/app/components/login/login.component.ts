@@ -1,19 +1,34 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { ReqHttpService } from '../../services/req-http.service';
 import { ILogin } from '../../models/postLogin.interface';
+import { NgClass } from '@angular/common';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, ReactiveFormsModule, NgClass],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.css', '/src/styles.css'],
 })
 export class LoginComponent {
   loginDados: ILogin = {
     email: '',
     password: '',
   };
+
+  form = new FormGroup({
+    email: new FormControl(null, [Validators.email, Validators.required]),
+    password: new FormControl(null, [
+      Validators.minLength(3),
+      Validators.required,
+    ]),
+  });
 
   constructor(private reqHttp: ReqHttpService) {}
 

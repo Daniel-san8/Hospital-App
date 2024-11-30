@@ -1,19 +1,41 @@
 <div class="login-container">
   <div class="logo">
-    <img src="../../../assets/LogoHealth.png" alt="Logo">
+    <img src="../../../assets/LogoHealth.png" alt="Logo" />
     <h1>Vital<span class="colorSpan">Med</span></h1>
   </div>
 
   <div class="login-box">
     <h2>Faça login em sua conta</h2>
-    <form (ngSubmit)="fazerLogin()" #loginForm="ngForm">
+    <form (ngSubmit)="fazerLogin()" [formGroup]="form">
       <label for="email">E-mail</label>
-      <input type="email" id="email" name="email" [(ngModel)]="loginDados.email" required>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        formControlName="email"
+        [ngClass]="{
+          'is-invalid':
+            form.get('email')?.invalid && form.get('email')?.touched,
+          'is-valid': form.get('email')?.valid
+        }"
+      />
 
-      <label for="password">Senha</label> <!-- Alterado de 'senha' para 'password' -->
-      <input type="password" id="password" name="password" [(ngModel)]="loginDados.password" required>
+      <label for="password">Senha</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        formControlName="password"
+        [ngClass]="{
+          'is-invalid':
+            form.get('password')?.invalid && form.get('password')?.touched,
+          'is-valid': form.get('password')?.valid
+        }"
+      />
 
-      <button type="submit" [disabled]="!loginForm.valid">Entrar</button>
+      <button type="submit" [disabled]="form.invalid ? true : null">
+        Entrar
+      </button>
     </form>
   </div>
 </div>
