@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ILogin } from '../models/postLogin.interface';
+import { ICadastrar } from '../models/cadastrar.interface';
 export interface ILoginResponse {
   token: string;
 }
@@ -19,5 +20,9 @@ export class ReqHttpService {
       `${this.baseUrl}/auth/login`,
       loginData
     );
+  }
+
+  postCadastrar(cadastroData: ICadastrar) {
+    return this.http.post<null>(`${this.baseUrl}/auth/register`, cadastroData);
   }
 }
