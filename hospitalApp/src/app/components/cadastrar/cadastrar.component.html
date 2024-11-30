@@ -1,74 +1,51 @@
-<div>
-  <div class="header">
-    <header class="form-header">
-      <img src="../assets/LogoHealth.png" class="logo" alt="Logo" />
-      <div class="title-header">Vital<span class="sub-med">Med</span></div>
-    </header>
-  </div>
+<div class="account-form">
+  <form class="form-container" (ngSubmit)="fazerCadastro()" #cadastroForm="ngForm">
+    <p class="title-p">Crie uma conta</p>
 
-  <div class="account-form">
-    
-      <form class="form-container">
-        <p class="title-p">Crie uma conta</p>
-        <div class="user-type">
-          <button class="usuario-button"  value="Usuario">Usuário</button>
-          <button class="usuario-button" value="Admin">ADMIN</button>
-        </div>
-       <div class="form-container-group">
-        <div class="form-group">
-          <div>
-            <div class="text-intification">Nome</div>
-            <input type="text" />
-          </div>
-          <div>
-            <div class="text-intification">CPF</div>
-            <input type="text" />
-          </div>
-        </div>
-  
-        <div class="form-group">
-          <div class="text-intification">
-            Data de Nascimento"
-            <div><input type="date" /></div>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="text-intification">
-            Contato
-            <div>
-              <input type="text" />
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-        <div class="text-intification">
-          Cartão de Convênio<span> (se aplicável)</span>
-          <div>
-            <input type="text" />
-          </div>
-        </div>
-      </div>
-        <div class="form-group">
-          <div class="text-intification">
-            E-mail
-            <div><input type="email" /></div>
-          </div>
-          <div class="text-intification">
-            Senha
-            <div><input type="password" /></div>
-          </div>
-        </div>
-       </div>
-      </form>
-    
-  </div>
-  <div class="form-footer">
-    <label>
-      <input type="checkbox" /> Aceite dos Termos de Uso e Política de
-      Privacidade
-    </label>
-    <div class="submit-button">
-      <button class="button-footer" type="submit">Salvar</button>
+    <div class="user-type">
+      <button type="button" class="usuario-button" (click)="cadastroDados.tipoUsuario = 'Usuario'">Usuário</button>
+      <button type="button" class="usuario-button" (click)="cadastroDados.tipoUsuario = 'Admin'">Admin</button>
     </div>
-  </div>
+
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input type="text" id="nome" [(ngModel)]="cadastroDados.nome" name="nome" required />
+
+      <label for="cpf">CPF</label>
+      <input type="text" id="cpf" [(ngModel)]="cadastroDados.cpf" name="cpf" />
+    </div>
+
+    <div class="form-group">
+      <label for="dataNascimento">Data de Nascimento</label>
+      <input type="date" id="dataNascimento" [(ngModel)]="cadastroDados.dataNascimento" name="dataNascimento" />
+    </div>
+
+    <div class="form-group">
+      <label for="contato">Contato</label>
+      <input type="text" id="contato" [(ngModel)]="cadastroDados.contato" name="contato" />
+    </div>
+
+    <div class="form-group">
+      <label for="cartaoConvenio">Cartão de Convênio</label>
+      <input type="text" id="cartaoConvenio" [(ngModel)]="cadastroDados.cartaoConvenio" name="cartaoConvenio" />
+    </div>
+
+    <div class="form-group">
+      <label for="email">E-mail</label>
+      <input type="email" id="email" [(ngModel)]="cadastroDados.email" name="email" required />
+
+      <label for="password">Senha</label>
+      <input type="password" id="password" [(ngModel)]="cadastroDados.password" name="password" required />
+    </div>
+
+    <div class="form-footer">
+      <label>
+        <input type="checkbox" required /> Aceite dos Termos de Uso e Política de Privacidade
+      </label>
+      <div class="submit-button">
+        <button class="button-footer" type="submit" [disabled]="!cadastroForm.valid">Salvar</button>
+      </div>
+    </div>
+  </form>
 </div>
+
