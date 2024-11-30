@@ -1,31 +1,33 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { ReqHttpService } from '../../services/req-http.service';
+import { ILogin } from '../../models/postLogin.interface'; 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  loginDados = {
+  loginDados: ILogin = { 
     email: '',
-    senha: ''
+    password: ''
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private reqHttp: ReqHttpService) {}
 
   fazerLogin() {
-    const url = '#'; //adicionar url da api
-    this.http.post<any>(url, this.loginDados).subscribe({
-      next: (response: any) => {
-        console.log('Login realizado com sucesso!', response);
-        alert('Login realizado com sucesso!');
+    this.reqHttp.login(this.loginDados).subscribe
+    (
+      (response) => {
+        console.log('Login bem-sucedido:', response);
+        alert('Login realizado com sucesso!')
       },
-      error: (error: any) => {
+      (error) => {
         console.error('Erro ao fazer login:', error);
-        alert('Erro ao realizar o login.');
+        alert('Erro ao realizar o login.')
       }
-    });
+    );
   }
 }
