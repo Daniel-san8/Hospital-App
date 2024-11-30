@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { ReqHttpService } from '../../services/req-http.service';
 import { NgClass } from '@angular/common';
+import { IAuthLogin } from '../../models/authLogin.interface';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -28,7 +29,7 @@ export class LoginComponent {
 
   fazerLogin() {
     this.reqHttp.login(this.form.value).subscribe({
-      next: (value: any) =>
+      next: (value: IAuthLogin) =>
         console.log(`login funcionou ${JSON.stringify(value)}`),
       error: (err: any) => console.log(err),
     });

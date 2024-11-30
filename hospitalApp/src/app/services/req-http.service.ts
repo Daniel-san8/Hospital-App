@@ -16,7 +16,7 @@ export class ReqHttpService {
 
   constructor(private http: HttpClient) {}
 
-  login(loginData: ILogin): Observable<ILoginResponse> {
+  login(loginData: ILogin): Observable<IAuthLogin> {
     return this.http.post<IAuthLogin>(`${this.baseUrl}/auth/login`, loginData);
   }
 
