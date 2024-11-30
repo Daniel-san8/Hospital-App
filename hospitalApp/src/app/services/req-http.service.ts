@@ -10,11 +10,14 @@ export interface ILoginResponse {
   providedIn: 'root',
 })
 export class ReqHttpService {
-  private baseUrl = 'http://localhost:3000/auth';
+  private baseUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
 
   login(loginData: ILogin): Observable<ILoginResponse> {
-    return this.http.post<ILoginResponse>(`${this.baseUrl}/login`, loginData);
+    return this.http.post<ILoginResponse>(
+      `${this.baseUrl}/auth/login`,
+      loginData
+    );
   }
 }
