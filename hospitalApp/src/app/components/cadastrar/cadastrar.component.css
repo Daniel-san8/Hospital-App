@@ -28,7 +28,7 @@ header {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  width: 50%; 
+  width: 50%;
   text-align: center;
   margin-top: 3rem;
 }
@@ -56,7 +56,7 @@ span {
   line-height: 71.94px;
   size: 60px;
 }
-.sub-med{
+.sub-med {
   font-size: 60px;
   color: #000000;
   font-style: italic;
@@ -64,8 +64,8 @@ span {
   size: 60px;
 }
 
-.title-p{
- font-size: 35px;
+.title-p {
+  font-size: 35px;
   size: 50px;
   line-height: 59.95px;
   margin-bottom: 20px;
@@ -138,4 +138,19 @@ input[type="checkbox"] {
 
 .button-footer:hover {
   background-color: #1f4b421c;
+}
+.divInput {
+  border: 2px solid transparent;
+  outline: none;
+}
+
+.divInput input {
+  outline: none;
+}
+.is-invalid {
+  border: 2px solid red;
+}
+
+.is-valid {
+  border: 2px solid green;
 }
