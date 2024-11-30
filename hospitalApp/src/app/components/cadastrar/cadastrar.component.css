@@ -147,10 +147,3 @@ input[type="checkbox"] {
 .divInput input {
   outline: none;
 }
-.is-invalid {
-  border: 2px solid red;
-}
-
-.is-valid {
-  border: 2px solid green;
-}

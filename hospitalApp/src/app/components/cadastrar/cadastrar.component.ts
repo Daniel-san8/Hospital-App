@@ -13,7 +13,7 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [RouterLink, ReactiveFormsModule, NgClass],
   templateUrl: './cadastrar.component.html',
-  styleUrls: ['./cadastrar.component.css'],
+  styleUrls: ['./cadastrar.component.css', '/src/styles.css'],
 })
 export class CadastrarComponent {
   form = new FormGroup({
