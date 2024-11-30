@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ILogin } from '../models/postLogin.interface';
 import { ICadastrar } from '../models/cadastrar.interface';
+import { IAuthLogin } from '../models/authLogin.interface';
 export interface ILoginResponse {
   token: string;
 }
@@ -16,10 +17,7 @@ export class ReqHttpService {
   constructor(private http: HttpClient) {}
 
   login(loginData: ILogin): Observable<ILoginResponse> {
-    return this.http.post<ILoginResponse>(
-      `${this.baseUrl}/auth/login`,
-      loginData
-    );
+    return this.http.post<IAuthLogin>(`${this.baseUrl}/auth/login`, loginData);
   }
 
   postCadastrar(cadastroData: ICadastrar) {

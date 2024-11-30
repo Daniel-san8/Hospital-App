@@ -28,7 +28,8 @@ export class LoginComponent {
 
   fazerLogin() {
     this.reqHttp.login(this.form.value).subscribe({
-      next: (value: any) => console.log(`login funcionou ${value}`),
+      next: (value: any) =>
+        console.log(`login funcionou ${JSON.stringify(value)}`),
       error: (err: any) => console.log(err),
     });
   }
