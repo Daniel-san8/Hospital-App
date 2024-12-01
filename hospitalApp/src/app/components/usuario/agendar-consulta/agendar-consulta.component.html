@@ -37,6 +37,7 @@
           'is-valid': form.get('date')?.valid
         }"
         mask="0000-00-00"
+        [dropSpecialCharacters]="false"
       />
       <label for="time">Horário</label>
       <input

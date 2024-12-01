@@ -37,7 +37,10 @@ export class AgendarConsultaComponent {
       : undefined;
 
     this.reqHttp.postAgendarConsulta({ ...paylod }, { headers }).subscribe({
-      next: () => this.router.navigate(['/registerAdmin']),
+      next: () => {
+        console.log(this.form.get('date'));
+        this.router.navigate(['/registerAdmin']);
+      },
       error: (err: any) => console.log('isso é um erro ' + JSON.stringify(err)),
     });
   }
