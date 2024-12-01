@@ -7,7 +7,11 @@
   </div>
 
   <div class="account-form">
-    <form class="form-container" [formGroup]="form">
+    <form
+      class="form-container"
+      [formGroup]="form"
+      (ngSubmit)="cadastrarUsuario()"
+    >
       <p class="title-p">Crie uma conta</p>
       <div class="user-type">
         <a class="usuario-button" routerLink="/registerAdmin"> ADMIN </a>
