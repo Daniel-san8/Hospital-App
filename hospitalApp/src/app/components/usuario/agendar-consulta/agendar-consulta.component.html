@@ -1,4 +1,49 @@
-<button class="agendar-consulta-button">
-  <span>Agende uma nova consulta</span>
-  <span>+</span>
-</button>
+<div class="agendar-consulta-container">
+  <div class="agendar-consulta-box">
+    <h2>Agendar uma nova consulta</h2>
+    <form  
+    [formGroup]="form"
+    (ngSubmit)="agendarConsulta()"
+    >
+      <label for="specialty">Especialidade</label>
+      <input
+        type="text"
+        id="specialty"
+        name="specialty"
+        formControlName="specialty"
+      />
+      <label for="doctor">Doutor(a)</label>
+      <input
+        type="text"
+        id="doctor"
+        name="doctor"
+        formControlName="doctor"
+      />
+      <label for="date">Data</label>
+      <input
+        type="text"
+        id="date"
+        name="date"
+        formControlName="date"
+      />
+      <label for="time">Horário</label>
+      <input
+        type="text"
+        id="time"
+        name="time"
+        formControlName="time"
+      />
+      <label for="obs">Observações</label>
+      <input
+        type="text"
+        id="obs"
+        name="obs"
+        formControlName="obs"
+      />
+
+      <button type="submit" [disabled]="form.invalid ? true : null">
+        Agendar
+      </button>
+    </form>
+  </div>
+</div>
