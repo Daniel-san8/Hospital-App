@@ -11,10 +11,11 @@ import { Router } from '@angular/router';
 import { ReqHttpService } from '../../../services/req-http.service';
 import { NgClass } from '@angular/common';
 import { IPostConsulta } from '../../../models/postConsulta.interface';
+import { NgxMaskDirective } from 'ngx-mask';
 @Component({
   selector: 'app-agendar-consulta',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, NgClass],
+  imports: [FormsModule, ReactiveFormsModule, NgClass, NgxMaskDirective],
   templateUrl: './agendar-consulta.component.html',
   styleUrls: ['./agendar-consulta.component.css', '/src/styles.css'],
 })

@@ -36,6 +36,7 @@
           'is-invalid': form.get('date')?.invalid && form.get('date')?.touched,
           'is-valid': form.get('date')?.valid
         }"
+        mask="0000-00-00"
       />
       <label for="time">Horário</label>
       <input
@@ -47,6 +48,7 @@
           'is-invalid': form.get('time')?.invalid && form.get('time')?.touched,
           'is-valid': form.get('time')?.valid
         }"
+        mask="00:00"
       />
       <label for="obs">Observações</label>
       <input
