@@ -1,7 +1,7 @@
 export interface IPostConsulta {
-  specialty: string,
-  doctor: string,
-  date: string,
-  time: string,
-  obs: string
+  specialty?: string | null;
+  doctor?: string | null;
+  date?: string | null;
+  time?: string | null;
+  obs?: string | null;
 }

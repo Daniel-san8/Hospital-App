@@ -29,8 +29,14 @@ export class LoginComponent {
 
   fazerLogin() {
     this.reqHttp.login(this.form.value).subscribe({
-      next: (value: IAuthLogin) =>
-        console.log(`login funcionou ${JSON.stringify(value)}`),
+      next: (value: IAuthLogin) => {
+        // console.log(`login funcionou ${JSON.stringify(value)}`),
+        if (value && value.token) {
+          const expires = new Date();
+          expires.setDate(expires.getDate() + 7);
+          document.cookie = `authToken=${value.token}; expires=${expires.toUTCString()}; path=/`;
+        }
+      },
       error: (err: any) => console.log(err),
     });
   }
