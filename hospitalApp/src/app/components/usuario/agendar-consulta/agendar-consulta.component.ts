@@ -31,8 +31,10 @@ export class AgendarConsultaComponent {
   agendarConsulta() {
     const paylod: IPostConsulta = this.form.value;
     const authToken = this.getAuthToken();
-    const headers = authToken ? new HttpHeaders().set('Authorization', `Bearer ${authToken}`) : undefined;
-    
+    const headers = authToken
+      ? new HttpHeaders().set('Authorization', `Bearer ${authToken}`)
+      : undefined;
+
     this.reqHttp.postAgendarConsulta({ ...paylod }, { headers }).subscribe({
       next: () => this.router.navigate(['/registerAdmin']),
       error: (err: any) => console.log('isso é um erro ' + JSON.stringify(err)),
@@ -43,7 +45,7 @@ export class AgendarConsultaComponent {
     const name = 'authToken=';
     const decodedCookie = decodeURIComponent(document.cookie);
     const cookieArray = decodedCookie.split(';');
-  
+
     for (let i = 0; i < cookieArray.length; i++) {
       let cookie = cookieArray[i].trim();
       if (cookie.indexOf(name) === 0) {
