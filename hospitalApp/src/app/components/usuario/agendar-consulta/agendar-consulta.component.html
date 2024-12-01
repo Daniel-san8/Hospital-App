@@ -50,7 +50,14 @@
           'is-valid': form.get('time')?.valid
         }"
         mask="00:00"
+        [dropSpecialCharacters]="false"
       />
+      <ng-container
+        *ngIf="form.get('time')?.errors?.['errorTime'] && form.get('time')?.touched"
+      >
+        <small>{{ form.get('time')?.errors?.['errorTime'] }}</small>
+      </ng-container>
+
       <label for="obs">Observações</label>
       <input
         type="text"
