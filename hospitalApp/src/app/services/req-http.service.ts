@@ -25,14 +25,7 @@ export class ReqHttpService {
     return this.http.post<null>(`${this.baseUrl}/auth/register`, cadastroData);
   }
 
-  postAgendarConsulta(
-    consultaData: IPostConsulta,
-    options?: { headers?: HttpHeaders }
-  ) {
-    return this.http.post<null>(
-      `${this.baseUrl}/appointments`,
-      consultaData,
-      options
-    );
+  postAgendarConsulta(consultaData: IPostConsulta) {
+    return this.http.post<null>(`${this.baseUrl}/appointments`, consultaData);
   }
 }

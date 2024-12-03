@@ -35,40 +35,20 @@ export class AgendarConsultaComponent {
   constructor(private reqHttp: ReqHttpService, private router: Router) {}
   agendarConsulta() {
     const paylod: IPostConsulta = this.form.value;
-    const authToken = this.getAuthToken();
-    const headers = authToken
-      ? new HttpHeaders().set('Authorization', `Bearer ${authToken}`)
-      : undefined;
 
-    this.reqHttp.postAgendarConsulta({ ...paylod }, { headers }).subscribe({
-      next: () => {
-        this.router.navigate(['/registerAdmin']);
-      },
+    this.reqHttp.postAgendarConsulta({ ...paylod }).subscribe({
+      next: () => this.router.navigate(['/registerAdmin']),
       error: (err: any) => console.log('isso é um erro ' + JSON.stringify(err)),
     });
   }
 
   validateHours(): ValidatorFn {
-    const formatTime = /^([01][0-9]|2[0-3]):([0-5][0-9])$/;
+    const formatTime = /^\d{2}:\d{2}$/;
     return (control: AbstractControl): ValidationErrors | null => {
-      if (!formatTime.test(control.value)) {
-        return { errorTime: 'O horário deve estar entre 00:00 e 23:59' };
+      if (formatTime.test(control.value)) {
+        return null;
       }
-      return null;
+      return { errorTime: 'Limite de hora 23:59' };
     };
-  }
-
-  private getAuthToken(): string | null {
-    const name = 'authToken=';
-    const decodedCookie = decodeURIComponent(document.cookie);
-    const cookieArray = decodedCookie.split(';');
-
-    for (let i = 0; i < cookieArray.length; i++) {
-      let cookie = cookieArray[i].trim();
-      if (cookie.indexOf(name) === 0) {
-        return cookie.substring(name.length, cookie.length);
-      }
-    }
-    return null;
   }
 }
