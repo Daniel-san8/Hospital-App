@@ -5,6 +5,7 @@ import { ILogin } from '../models/postLogin.interface';
 import { ICadastrar } from '../models/cadastrar.interface';
 import { IAuthLogin } from '../models/authLogin.interface';
 import { IPostConsulta } from '../models/postConsulta.interface';
+import { IListAppointments } from '../models/listAppointments.interface';
 export interface ILoginResponse {
   token: string;
 }
@@ -27,5 +28,9 @@ export class ReqHttpService {
 
   postAgendarConsulta(consultaData: IPostConsulta) {
     return this.http.post<null>(`${this.baseUrl}/appointments`, consultaData);
+  }
+
+  getConsultas() {
+    return this.http.get<IListAppointments[]>(`${this.baseUrl}/appointments`);
   }
 }
