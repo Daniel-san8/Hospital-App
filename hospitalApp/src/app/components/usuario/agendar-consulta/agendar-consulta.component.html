@@ -69,10 +69,13 @@
           'is-valid': form.get('obs')?.valid
         }"
       />
-
+      @if(!isLoading) {
       <button type="submit" [disabled]="form.invalid ? true : null">
         Agendar
       </button>
+      }@else {
+      <div class="loader space"></div>
+      }
     </form>
   </div>
 </div>

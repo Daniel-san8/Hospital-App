@@ -6,7 +6,9 @@ import { catchError, throwError } from 'rxjs';
 export const hospitalInterceptor: HttpInterceptorFn = (req, next) => {
   const ngxCookie = inject(CookieService);
   const token = ngxCookie.get('token');
-  if (req.url.includes('/auth')) return next(req);
+
+  if (req.url.includes('/auth'))
+    return next(req).pipe(catchError((err: any) => throwError(() => err)));
 
   const newRequest = req.clone({
     setHeaders: {

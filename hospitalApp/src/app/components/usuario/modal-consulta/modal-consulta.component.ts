@@ -21,6 +21,8 @@ import { IPutConsulta } from '../../../models/putConsulta.interface';
   styleUrls: ['./modal-consulta.component.css', '/src/styles.css'],
 })
 export class ModalConsultaComponent {
+  isLoading = false;
+
   form = new FormGroup({
     specialty: new FormControl(null, [Validators.required]),
     doctor: new FormControl(null, [Validators.required]),
@@ -34,13 +36,18 @@ export class ModalConsultaComponent {
 
   constructor(private reqHttp: ReqHttpService) {}
   atualizarAppointment() {
+    this.isLoading = true;
     const paylod: IPutConsulta = this.form.value;
 
     this.reqHttp.putConsultas({ ...paylod }, this.idAppointment).subscribe({
       next: () => {
         this.dispareGetAppointments.emit();
       },
-      error: (err: any) => console.log('isso é um erro ' + JSON.stringify(err)),
+      error: (err: any) => {
+        this.isLoading = false;
+        console.log(err);
+      },
+      complete: () => (this.isLoading = false),
     });
   }
 

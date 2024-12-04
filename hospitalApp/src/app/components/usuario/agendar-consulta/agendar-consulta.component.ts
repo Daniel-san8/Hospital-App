@@ -1,9 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
   FormGroup,
-  FormsModule,
   ReactiveFormsModule,
   ValidationErrors,
   ValidatorFn,
@@ -23,6 +22,8 @@ import { NgxMaskDirective } from 'ngx-mask';
   styleUrls: ['./agendar-consulta.component.css', '/src/styles.css'],
 })
 export class AgendarConsultaComponent {
+  isLoading = false;
+
   form = new FormGroup({
     specialty: new FormControl(null, [Validators.required]),
     doctor: new FormControl(null, [Validators.required]),
@@ -35,14 +36,19 @@ export class AgendarConsultaComponent {
 
   constructor(private reqHttp: ReqHttpService) {}
   agendarConsulta() {
+    this.isLoading = true;
     const paylod: IPostConsulta = this.form.value;
 
     this.reqHttp.postAgendarConsulta({ ...paylod }).subscribe({
-      next: () => {
+      error: (err: any) => {
+        this.isLoading = false;
+        console.log(err);
+      },
+      complete: () => {
         this.dispareGetAppointments.emit();
         this.form.reset();
+        this.isLoading = false;
       },
-      error: (err: any) => console.log('isso é um erro ' + JSON.stringify(err)),
     });
   }
 

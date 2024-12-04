@@ -13,9 +13,6 @@
       (ngSubmit)="cadastrarUsuario()"
     >
       <p class="title-p">Crie uma conta</p>
-      <div class="user-type">
-        <a class="usuario-button" routerLink="/registerAdmin"> ADMIN </a>
-      </div>
       <div class="form-container-group">
         <div class="form-group">
           <div>
@@ -76,7 +73,12 @@
       </div>
       <div class="form-footer">
         <div class="submit-button">
+          @if(!isLoading) {
           <button class="button-footer" type="submit">Cadastrar</button>
+
+          }@else {
+          <div class="loader space"></div>
+          }
         </div>
       </div>
     </form>
