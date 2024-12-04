@@ -16,6 +16,7 @@ export class ConsultasComponent {
   @Input({ required: true, alias: 'listAppointments' })
   listAppointments: IListAppointments[] = [];
   modalIsOpen = false;
+  idUserModal = '';
 
   @Output() dispareGetAppointments = new EventEmitter<void>();
 
@@ -32,5 +33,11 @@ export class ConsultasComponent {
 
   toggleModal() {
     this.modalIsOpen = !this.modalIsOpen;
+    this.dispareGetAppointments.emit();
+  }
+
+  enviarId(idUser: string) {
+    this.idUserModal = idUser;
+    this.toggleModal();
   }
 }

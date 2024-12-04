@@ -6,6 +6,7 @@ import { ICadastrar } from '../models/cadastrar.interface';
 import { IAuthLogin } from '../models/authLogin.interface';
 import { IPostConsulta } from '../models/postConsulta.interface';
 import { IListAppointments } from '../models/listAppointments.interface';
+import { IPutConsulta } from '../models/putConsulta.interface';
 export interface ILoginResponse {
   token: string;
 }
@@ -36,5 +37,12 @@ export class ReqHttpService {
 
   deleteConsultas(idUser: string) {
     return this.http.delete<null>(`${this.baseUrl}/appointments/${idUser}`);
+  }
+
+  putConsultas(paylod: IPutConsulta, idAppointment: string) {
+    return this.http.put<any>(
+      `${this.baseUrl}/appointments/${idAppointment}`,
+      paylod
+    );
   }
 }

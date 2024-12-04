@@ -1,6 +1,9 @@
 <div class="consultasGroup">
   @if(modalIsOpen) {
-  <app-modal-consulta></app-modal-consulta>
+  <app-modal-consulta
+    [idAppointment]="idUserModal"
+    (dispareGetAppointments)="toggleModal()"
+  ></app-modal-consulta>
   }@else { @if (listAppointments.length === 0) {
   <p class="p-consultas">Sem consultas</p>
   }@else {
@@ -13,7 +16,7 @@
           <span>Doutor(a): {{ appointment.doctor }}</span>
 
           <div class="group-icon">
-            <span (click)="toggleModal()"
+            <span (click)="enviarId(appointment.id)"
               ><img src="assets/Edição.svg" alt="editar"
             /></span>
             <span (click)="excluirAppointments(appointment.id)"

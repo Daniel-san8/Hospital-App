@@ -1,7 +1,19 @@
 <div class="agendar-consulta-container">
   <div class="agendar-consulta-box">
     <h2>Reagendar consulta</h2>
-    <form [formGroup]="form" (ngSubmit)="agendarConsulta()">
+    <form [formGroup]="form" (ngSubmit)="atualizarAppointment()">
+      <label for="specialty">Especialidade</label>
+      <input
+        type="text"
+        id="specialty"
+        name="specialty"
+        formControlName="specialty"
+        [ngClass]="{
+          'is-invalid':
+            form.get('specialty')?.invalid && form.get('specialty')?.touched,
+          'is-valid': form.get('specialty')?.valid
+        }"
+      />
       <label for="doctor">Doutor(a)</label>
       <input
         type="text"
