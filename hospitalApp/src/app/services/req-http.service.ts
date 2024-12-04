@@ -33,4 +33,8 @@ export class ReqHttpService {
   getConsultas() {
     return this.http.get<IListAppointments[]>(`${this.baseUrl}/appointments`);
   }
+
+  deleteConsultas(idUser: string) {
+    return this.http.delete<null>(`${this.baseUrl}/appointments/${idUser}`);
+  }
 }

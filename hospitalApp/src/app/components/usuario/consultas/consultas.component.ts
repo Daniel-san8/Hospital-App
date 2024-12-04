@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IListAppointments } from '../../../models/listAppointments.interface';
 import { NgFor } from '@angular/common';
+import { ReqHttpService } from '../../../services/req-http.service';
 
 @Component({
   selector: 'app-consultas',
@@ -12,4 +13,16 @@ import { NgFor } from '@angular/common';
 export class ConsultasComponent {
   @Input({ required: true, alias: 'listAppointments' })
   listAppointments: IListAppointments[] = [];
+
+  @Output() dispareGetAppointments = new EventEmitter<void>();
+
+  constructor(private http: ReqHttpService) {}
+  excluirAppointments(idUser: string) {
+    this.http.deleteConsultas(idUser).subscribe({
+      next: () => {
+        this.dispareGetAppointments.emit();
+      },
+      error: (err: any) => console.log(err),
+    });
+  }
 }

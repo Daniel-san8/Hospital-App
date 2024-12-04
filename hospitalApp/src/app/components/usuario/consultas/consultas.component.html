@@ -8,7 +8,9 @@
 
           <div class="group-icon">
             <span><img src="assets/Edição.svg" alt="editar" /></span>
-            <span><img src="assets/Excluir.svg" alt="excluir" /></span>
+            <span (click)="excluirAppointments(appointment.id)"
+              ><img src="assets/Excluir.svg" alt="excluir"
+            /></span>
           </div>
         </div>
 

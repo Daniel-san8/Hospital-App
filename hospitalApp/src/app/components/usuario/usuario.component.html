@@ -1,6 +1,9 @@
 <app-header />
 
 <div class="mainUsuario">
-  <app-consultas [listAppointments]="listAppointments" />
+  <app-consultas
+    [listAppointments]="listAppointments"
+    (dispareGetAppointments)="getAppointments()"
+  />
   <app-agendar-consulta (dispareGetAppointments)="getAppointments()" />
 </div>
