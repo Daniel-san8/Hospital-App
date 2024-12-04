@@ -24,7 +24,7 @@
 
           <span>Agendado para: {{ appointment.date | agendamento }}</span>
           <span>Horário : {{ appointment.time }}</span>
-          <span>Status: {{ appointment.status }}</span>
+          <span>Status: {{ appointment.status | statusAppointment }}</span>
         </div>
       </ng-container>
     </div>

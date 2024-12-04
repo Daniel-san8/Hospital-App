@@ -53,6 +53,7 @@ export class ReqHttpService {
       payload
     );
   }
+
   putDoneAppointment(payload: any, idAppointment: string) {
     return this.http.put<any>(
       `${this.baseUrl}/cancel/${idAppointment}`,

@@ -4,11 +4,12 @@ import { ReqHttpService } from '../../services/req-http.service';
 import { IListAppointments } from '../../models/listAppointments.interface';
 import { NgFor } from '@angular/common';
 import { AgendamentoPipe } from '../../pipes/agendamento.pipe';
+import { StatusAppointmentPipe } from '../../pipes/status-appointment.pipe';
 
 @Component({
   selector: 'app-page-doctor',
   standalone: true,
-  imports: [HeaderComponent, NgFor, AgendamentoPipe],
+  imports: [HeaderComponent, NgFor, AgendamentoPipe, StatusAppointmentPipe],
   templateUrl: './page-doctor.component.html',
   styleUrl: './page-doctor.component.css',
 })
@@ -21,26 +22,16 @@ export class PageDoctorComponent implements OnInit {
     this.reqHttp.getConsultas().subscribe({
       next: (value: IListAppointments[]) => {
         const nameDoctor = localStorage.getItem('nameUser');
-        const appointmentsFiltered = value.filter((appointment) => {
-          return appointment.doctor === nameDoctor;
-        });
+        const appointmentsFiltered = value.filter(
+          (appointment) => appointment.doctor === nameDoctor
+        );
         this.appointmentsDoctor = appointmentsFiltered;
-        console.log(value);
       },
     });
   }
 
   ngOnInit() {
     this.buscarConsultas();
-  }
-
-  excluirAppointments(idUser: string) {
-    this.reqHttp.deleteConsultas(idUser).subscribe({
-      next: () => {
-        this.buscarConsultas();
-      },
-      error: (err: any) => console.log(err),
-    });
   }
 
   cancelarConsulta(idAppointment: string) {
