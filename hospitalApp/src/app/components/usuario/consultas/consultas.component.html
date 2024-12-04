@@ -1,5 +1,9 @@
 <div class="consultasGroup">
+  @if (listAppointments.length === 0) {
+  <p class="p-consultas">Sem consultas</p>
+  }@else {
   <p class="p-consultas">Próximas consultas</p>
+  }
   <div class="consulta">
     <div class="group">
       <ng-container *ngFor="let appointment of listAppointments">
