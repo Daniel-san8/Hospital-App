@@ -26,4 +26,8 @@ export const routes: Routes = [
     path: 'register-doctor',
     component: CreateDoctorComponent,
   },
+  {
+    path: 'doctor',
+    component: UsuarioComponent,
+  },
 ];

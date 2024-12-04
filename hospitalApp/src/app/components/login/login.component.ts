@@ -11,6 +11,7 @@ import { NgClass } from '@angular/common';
 import { IAuthLogin } from '../../models/authLogin.interface';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { ERole } from '../../models/role.enum';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -52,7 +53,11 @@ export class LoginComponent {
         });
 
         localStorage.setItem('nameUser', value.user.name);
-        this.router.navigate(['/usuario']);
+        if (value.user.role === ERole.ADMIN) {
+          this.router.navigate(['/doctor']);
+        } else {
+          this.router.navigate(['/usuario']);
+        }
       },
       error: (err: any) => console.log(err),
     });
