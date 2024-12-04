@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +15,7 @@ export class HeaderComponent {
     this.cookies.delete('token');
     this.cookies.delete('ROLE');
   }
+  userName = this.user.nameUser ?? 'USER';
 
-  constructor(private cookies: CookieService) {}
+  constructor(private cookies: CookieService, protected user: UserService) {}
 }
