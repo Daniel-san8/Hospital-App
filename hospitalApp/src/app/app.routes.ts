@@ -3,6 +3,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { CadastrarComponent } from './components/cadastrar/cadastrar.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
+import { CreateDoctorComponent } from './components/create-doctor/create-doctor.component';
 
 export const routes: Routes = [
   {
@@ -22,8 +23,7 @@ export const routes: Routes = [
     component: UsuarioComponent,
   },
   {
-    // não esquecer de alinhar o component correto
-    path: 'registerAdmin',
-    component: UsuarioComponent,
+    path: 'register-doctor',
+    component: CreateDoctorComponent,
   },
 ];
