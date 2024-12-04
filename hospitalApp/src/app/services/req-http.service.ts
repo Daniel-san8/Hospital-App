@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { ILogin } from '../models/postLogin.interface';
 import { ICadastrar } from '../models/cadastrar.interface';
 import { IAuthLogin } from '../models/authLogin.interface';
@@ -8,9 +7,6 @@ import { IPostConsulta } from '../models/postConsulta.interface';
 import { IListAppointments } from '../models/listAppointments.interface';
 import { IPutConsulta } from '../models/putConsulta.interface';
 import { IUser } from '../models/user.interface';
-export interface ILoginResponse {
-  token: string;
-}
 
 @Injectable({
   providedIn: 'root',

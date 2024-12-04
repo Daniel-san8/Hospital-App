@@ -33,9 +33,14 @@
         }"
       />
 
+      @if(!isLoading) {
       <button type="submit" [disabled]="form.invalid ? true : null">
         Entrar
       </button>
+      }@else {
+      <div class="loader space"></div>
+
+      }
     </form>
   </div>
 </div>

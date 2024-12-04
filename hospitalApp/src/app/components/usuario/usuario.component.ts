@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { ConsultasComponent } from './consultas/consultas.component';
 import { AgendarConsultaComponent } from './agendar-consulta/agendar-consulta.component';
@@ -13,7 +13,7 @@ import { IUser } from '../../models/user.interface';
   templateUrl: './usuario.component.html',
   styleUrl: './usuario.component.css',
 })
-export class UsuarioComponent implements OnInit {
+export class UsuarioComponent implements AfterViewInit {
   listAppointments: IListAppointments[] = [];
 
   constructor(private reqHttp: ReqHttpService) {}
@@ -27,10 +27,7 @@ export class UsuarioComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.getAppointments();
-    this.reqHttp
-      .getUsuarios()
-      .subscribe((value: IUser[]) => console.log(value));
   }
 }

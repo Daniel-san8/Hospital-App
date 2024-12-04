@@ -20,6 +20,8 @@ import { ERole } from '../../models/role.enum';
   styleUrls: ['./login.component.css', '/src/styles.css'],
 })
 export class LoginComponent {
+  isLoading = false;
+
   form = new FormGroup({
     email: new FormControl(null, [Validators.email, Validators.required]),
     password: new FormControl(null, [
@@ -37,6 +39,7 @@ export class LoginComponent {
   fazerLogin() {
     const date = new Date();
     const expireToken = date.getHours() + 2;
+    this.isLoading = true;
 
     this.reqHttp.login(this.form.value).subscribe({
       next: (value: IAuthLogin) => {
@@ -59,7 +62,11 @@ export class LoginComponent {
           this.router.navigate(['/usuario']);
         }
       },
-      error: (err: any) => console.log(err),
+      error: (err: any) => {
+        this.isLoading = false;
+        console.log(err);
+      },
+      complete: () => (this.isLoading = false),
     });
   }
 }

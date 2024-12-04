@@ -19,8 +19,8 @@ body {
 }
 
 .logo img {
-  margin:20px 0;
-  width: 200px; 
+  margin: 20px 0;
+  width: 200px;
   height: 180px;
 }
 
@@ -32,8 +32,8 @@ body {
   margin: 10px;
 }
 
-.colorSpan{
-color:#235241;
+.colorSpan {
+  color: #235241;
 }
 
 /* Caixa de login */
@@ -59,8 +59,7 @@ form {
   flex-direction: column;
   gap: 10px;
   margin: 0 30px;
-} 
-
+}
 
 label {
   font-size: 25px;
@@ -92,4 +91,32 @@ button {
 
 button:hover {
   background-color: #c0dbd5;
+}
+.loader {
+  width: 15px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  animation: l5 1s infinite linear alternate;
+}
+@keyframes l5 {
+  0% {
+    box-shadow: 20px 0 #000, -20px 0 #0002;
+    background: #000;
+  }
+  33% {
+    box-shadow: 20px 0 #000, -20px 0 #0002;
+    background: #0002;
+  }
+  66% {
+    box-shadow: 20px 0 #0002, -20px 0 #000;
+    background: #0002;
+  }
+  100% {
+    box-shadow: 20px 0 #0002, -20px 0 #000;
+    background: #000;
+  }
+}
+
+.space {
+  margin: auto;
 }
