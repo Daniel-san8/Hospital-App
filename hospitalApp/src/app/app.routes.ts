@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { CadastrarComponent } from './components/cadastrar/cadastrar.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { CreateDoctorComponent } from './components/create-doctor/create-doctor.component';
+import { hospitalGuard } from './guards/hospital.guard';
 
 export const routes: Routes = [
   {
@@ -29,5 +30,6 @@ export const routes: Routes = [
   {
     path: 'doctor',
     component: UsuarioComponent,
+    canActivate: [hospitalGuard],
   },
 ];
