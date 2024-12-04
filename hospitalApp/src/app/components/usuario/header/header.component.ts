@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -10,12 +9,17 @@ import { UserService } from '../../../services/user.service';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   logout() {
     this.cookies.delete('token');
     this.cookies.delete('ROLE');
+    localStorage.removeItem('nameUser');
   }
-  userName = this.user.nameUser ?? 'USER';
+  userName?: string;
 
-  constructor(private cookies: CookieService, protected user: UserService) {}
+  ngOnInit() {
+    this.userName = localStorage.getItem('nameUser') ?? 'USER';
+  }
+
+  constructor(private cookies: CookieService) {}
 }

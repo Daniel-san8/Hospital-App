@@ -11,7 +11,6 @@ import { NgClass } from '@angular/common';
 import { IAuthLogin } from '../../models/authLogin.interface';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
-import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -31,8 +30,7 @@ export class LoginComponent {
   constructor(
     private reqHttp: ReqHttpService,
     private cookies: CookieService,
-    private router: Router,
-    private user: UserService
+    private router: Router
   ) {}
 
   fazerLogin() {
@@ -53,7 +51,7 @@ export class LoginComponent {
           sameSite: 'Strict',
         });
 
-        this.user.nameUser = value.user.name;
+        localStorage.setItem('nameUser', value.user.name);
         this.router.navigate(['/usuario']);
       },
       error: (err: any) => console.log(err),
