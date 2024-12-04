@@ -9,6 +9,9 @@ import {
 import { ReqHttpService } from '../../services/req-http.service';
 import { NgClass } from '@angular/common';
 import { IAuthLogin } from '../../models/authLogin.interface';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
+import { ERole } from '../../models/role.enum';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -25,16 +28,35 @@ export class LoginComponent {
     ]),
   });
 
-  constructor(private reqHttp: ReqHttpService) {}
+  constructor(
+    private reqHttp: ReqHttpService,
+    private cookies: CookieService,
+    private router: Router
+  ) {}
 
   fazerLogin() {
+    const date = new Date();
+    const expireToken = date.getHours() + 2;
+
     this.reqHttp.login(this.form.value).subscribe({
       next: (value: IAuthLogin) => {
-        // console.log(`login funcionou ${JSON.stringify(value)}`),
-        if (value && value.token) {
-          const expires = new Date();
-          expires.setDate(expires.getDate() + 7);
-          document.cookie = `authToken=${value.token}; expires=${expires.toUTCString()}; path=/`;
+        this.cookies.set('token', value.token, {
+          secure: true,
+          expires: expireToken,
+          sameSite: 'Strict',
+        });
+
+        this.cookies.set('ROLE', value.user.role, {
+          secure: true,
+          expires: expireToken,
+          sameSite: 'Strict',
+        });
+
+        localStorage.setItem('nameUser', value.user.name);
+        if (value.user.role === ERole.ADMIN) {
+          this.router.navigate(['/doctor']);
+        } else {
+          this.router.navigate(['/usuario']);
         }
       },
       error: (err: any) => console.log(err),

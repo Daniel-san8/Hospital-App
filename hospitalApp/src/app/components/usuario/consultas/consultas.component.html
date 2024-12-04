@@ -1,31 +1,37 @@
 <div class="consultasGroup">
+  @if(modalIsOpen) {
+  <app-modal-consulta
+    [idAppointment]="idUserModal"
+    (dispareGetAppointments)="toggleModal()"
+  ></app-modal-consulta>
+  }@else { @if (listAppointments.length === 0) {
+  <p class="p-consultas">Sem consultas</p>
+  }@else {
   <p class="p-consultas">Próximas consultas</p>
-  <div>
-    <div class="consulta">
-      <span>Ortopedista</span>
-      <div class="group-icon">
-        <span><img src="assets/Edição.svg" alt="editar"></span>
-        <span><img src="assets/Excluir.svg" alt="excluir"></span>
-      </div>
-    </div>
+  }
+  <div class="consulta">
+    <div class="group">
+      <ng-container *ngFor="let appointment of listAppointments">
+        <div class="speciality">
+          <span>Doutor(a): {{ appointment.doctor }}</span>
 
-    <div class="doctor-date">
-      <span>Doutor Marcos</span>
-      <span>Agendado para: 20/11/2024</span>
-    </div>
+          <div class="group-icon">
+            <span (click)="enviarId(appointment.id)"
+              ><img src="assets/Edição.svg" alt="editar"
+            /></span>
+            <span (click)="excluirAppointments(appointment.id)"
+              ><img src="assets/Excluir.svg" alt="excluir"
+            /></span>
+          </div>
+        </div>
 
-    <div class="consulta">
-      <span>Clínica Médica</span>
-      <div class="group-icon">
-        <span><img src="assets/Edição.svg" alt="editar"></span>
-        <span><img src="assets/Excluir.svg" alt="excluir"></span>
-      </div>
-    </div>
+        <div class="doctor-date">
+          <span>Especialidade: {{ appointment.specialty }}</span>
 
-    <div class="doctor-date">
-      <span>Doutora Lúcia</span>
-      <span>Agendado para: 04/12/2024</span>
+          <span>Agendado para: {{ appointment.date | agendamento }}</span>
+        </div>
+      </ng-container>
     </div>
   </div>
-
+  }
 </div>

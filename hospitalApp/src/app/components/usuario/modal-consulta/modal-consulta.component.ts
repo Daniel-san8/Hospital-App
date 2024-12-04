@@ -1,28 +1,26 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
   FormGroup,
-  FormsModule,
   ReactiveFormsModule,
   ValidationErrors,
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-
-import { ReqHttpService } from '../../../services/req-http.service';
-import { NgClass, NgIf } from '@angular/common';
-import { IPostConsulta } from '../../../models/postConsulta.interface';
 import { NgxMaskDirective } from 'ngx-mask';
+import { ReqHttpService } from '../../../services/req-http.service';
+import { IPutConsulta } from '../../../models/putConsulta.interface';
 
 @Component({
-  selector: 'app-agendar-consulta',
+  selector: 'app-modal-consulta',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass, NgxMaskDirective, NgIf],
-  templateUrl: './agendar-consulta.component.html',
-  styleUrls: ['./agendar-consulta.component.css', '/src/styles.css'],
+  imports: [NgxMaskDirective, CommonModule, ReactiveFormsModule],
+  templateUrl: './modal-consulta.component.html',
+  styleUrls: ['./modal-consulta.component.css', '/src/styles.css'],
 })
-export class AgendarConsultaComponent {
+export class ModalConsultaComponent {
   form = new FormGroup({
     specialty: new FormControl(null, [Validators.required]),
     doctor: new FormControl(null, [Validators.required]),
@@ -31,16 +29,16 @@ export class AgendarConsultaComponent {
     obs: new FormControl(null, [Validators.required]),
   });
 
+  @Input({ required: true, alias: 'idAppointment' }) idAppointment = '';
   @Output() dispareGetAppointments = new EventEmitter<void>();
 
   constructor(private reqHttp: ReqHttpService) {}
-  agendarConsulta() {
-    const paylod: IPostConsulta = this.form.value;
+  atualizarAppointment() {
+    const paylod: IPutConsulta = this.form.value;
 
-    this.reqHttp.postAgendarConsulta({ ...paylod }).subscribe({
+    this.reqHttp.putConsultas({ ...paylod }, this.idAppointment).subscribe({
       next: () => {
         this.dispareGetAppointments.emit();
-        this.form.reset();
       },
       error: (err: any) => console.log('isso é um erro ' + JSON.stringify(err)),
     });

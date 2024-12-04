@@ -1,0 +1,52 @@
+<div class="header">
+  <header class="form-header">
+    <img src="../assets/LogoHealth.png" class="logo" alt="Logo" />
+    <div class="title-header">Vital<span class="sub-med">Med</span></div>
+  </header>
+</div>
+
+<form class="form-container" [formGroup]="formAdmin" (ngSubmit)="authAdmin()">
+  <div class="form-group">
+    <div>
+      <div class="text-intification">
+        Login
+
+        <div
+          class="divInput"
+          [ngClass]="{
+            'is-invalid':
+              formAdmin.get('nameAdmin')?.invalid &&
+              formAdmin.get('nameAdmin')?.touched,
+            'is-valid': formAdmin.get('nameAdmin')?.valid
+          }"
+        >
+          <input type="text" formControlName="nameAdmin" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div>
+      <div class="text-intification">
+        Senha
+
+        <div
+          class="divInput"
+          [ngClass]="{
+            'is-invalid':
+              formAdmin.get('passwordAdmin')?.invalid &&
+              formAdmin.get('passwordAdmin')?.touched,
+            'is-valid': formAdmin.get('passwordAdmin')?.valid
+          }"
+        >
+          <input type="password" formControlName="passwordAdmin" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="submit-button">
+    <button class="button-footer" type="submit">Login</button>
+  </div>
+</form>

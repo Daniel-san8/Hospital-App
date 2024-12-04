@@ -1,0 +1,78 @@
+<div class="agendar-consulta-container">
+  <div class="agendar-consulta-box">
+    <h2>Reagendar consulta</h2>
+    <form [formGroup]="form" (ngSubmit)="atualizarAppointment()">
+      <label for="specialty">Especialidade</label>
+      <input
+        type="text"
+        id="specialty"
+        name="specialty"
+        formControlName="specialty"
+        [ngClass]="{
+          'is-invalid':
+            form.get('specialty')?.invalid && form.get('specialty')?.touched,
+          'is-valid': form.get('specialty')?.valid
+        }"
+      />
+      <label for="doctor">Doutor(a)</label>
+      <input
+        type="text"
+        id="doctor"
+        name="doctor"
+        formControlName="doctor"
+        [ngClass]="{
+          'is-invalid':
+            form.get('doctor')?.invalid && form.get('doctor')?.touched,
+          'is-valid': form.get('doctor')?.valid
+        }"
+      />
+      <label for="date">Data</label>
+      <input
+        type="text"
+        id="date"
+        name="date"
+        formControlName="date"
+        [ngClass]="{
+          'is-invalid': form.get('date')?.invalid && form.get('date')?.touched,
+          'is-valid': form.get('date')?.valid
+        }"
+        mask="0000-00-00"
+        [dropSpecialCharacters]="false"
+      />
+      <label for="time">Horário</label>
+      <input
+        type="text"
+        id="time"
+        name="time"
+        formControlName="time"
+        [ngClass]="{
+          'is-invalid': form.get('time')?.invalid && form.get('time')?.touched,
+          'is-valid': form.get('time')?.valid
+        }"
+        mask="00:00"
+        [dropSpecialCharacters]="false"
+      />
+      <ng-container
+        *ngIf="form.get('time')?.errors?.['errorTime'] && form.get('time')?.touched"
+      >
+        <small>{{ form.get('time')?.errors?.['errorTime'] }}</small>
+      </ng-container>
+
+      <label for="obs">Observações</label>
+      <input
+        type="text"
+        id="obs"
+        name="obs"
+        formControlName="obs"
+        [ngClass]="{
+          'is-invalid': form.get('obs')?.invalid && form.get('obs')?.touched,
+          'is-valid': form.get('obs')?.valid
+        }"
+      />
+
+      <button type="submit" [disabled]="form.invalid ? true : null">
+        Reagendar
+      </button>
+    </form>
+  </div>
+</div>
