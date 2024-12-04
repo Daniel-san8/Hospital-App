@@ -1,30 +1,27 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Output } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
   FormGroup,
-  FormsModule,
   ReactiveFormsModule,
   ValidationErrors,
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-
-import { ReqHttpService } from '../../../services/req-http.service';
-import { NgClass, NgIf } from '@angular/common';
-import { IPostConsulta } from '../../../models/postConsulta.interface';
 import { NgxMaskDirective } from 'ngx-mask';
+import { ReqHttpService } from '../../../services/req-http.service';
+import { IPostConsulta } from '../../../models/postConsulta.interface';
 
 @Component({
-  selector: 'app-agendar-consulta',
+  selector: 'app-modal-consulta',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass, NgxMaskDirective, NgIf],
-  templateUrl: './agendar-consulta.component.html',
-  styleUrls: ['./agendar-consulta.component.css', '/src/styles.css'],
+  imports: [NgxMaskDirective, CommonModule, ReactiveFormsModule],
+  templateUrl: './modal-consulta.component.html',
+  styleUrls: ['./modal-consulta.component.css', '/src/styles.css'],
 })
-export class AgendarConsultaComponent {
+export class ModalConsultaComponent {
   form = new FormGroup({
-    specialty: new FormControl(null, [Validators.required]),
     doctor: new FormControl(null, [Validators.required]),
     date: new FormControl(null, [Validators.required]),
     time: new FormControl(null, [Validators.required, this.validateHours()]),

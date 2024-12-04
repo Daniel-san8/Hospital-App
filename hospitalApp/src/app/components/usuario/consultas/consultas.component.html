@@ -1,5 +1,7 @@
 <div class="consultasGroup">
-  @if (listAppointments.length === 0) {
+  @if(modalIsOpen) {
+  <app-modal-consulta></app-modal-consulta>
+  }@else { @if (listAppointments.length === 0) {
   <p class="p-consultas">Sem consultas</p>
   }@else {
   <p class="p-consultas">Próximas consultas</p>
@@ -11,7 +13,9 @@
           <span>Doutor(a): {{ appointment.doctor }}</span>
 
           <div class="group-icon">
-            <span><img src="assets/Edição.svg" alt="editar" /></span>
+            <span (click)="toggleModal()"
+              ><img src="assets/Edição.svg" alt="editar"
+            /></span>
             <span (click)="excluirAppointments(appointment.id)"
               ><img src="assets/Excluir.svg" alt="excluir"
             /></span>
@@ -26,4 +30,5 @@
       </ng-container>
     </div>
   </div>
+  }
 </div>
