@@ -1,10 +1,12 @@
 <header class="headerUsuario">
   <div class="iconHeader">
-    <img class="logoHeader" src="assets/LogoHealth.png" alt="logo">
+    <img class="logoHeader" src="assets/LogoHealth.png" alt="logo" />
     <p>Vital<span class="colorSpan">Med</span></p>
   </div>
   <div class="nameUsuario">
     <span>Usuário</span>
-    <img class="iconSino" src="assets/sino.svg" alt="sino">
+    <button routerLink="/login" class="iconSino" (click)="logout()">
+      Sair
+    </button>
   </div>
 </header>
