@@ -17,10 +17,16 @@ export class UsuarioComponent implements OnInit {
 
   constructor(private http: ReqHttpService) {}
 
-  ngOnInit() {
+  getAppointments() {
     this.http.getConsultas().subscribe({
-      next: (value: IListAppointments[]) => (this.listAppointments = value),
+      next: (value: IListAppointments[]) => {
+        this.listAppointments = value;
+      },
       error: (err: any) => console.log(err),
     });
+  }
+
+  ngOnInit() {
+    this.getAppointments();
   }
 }

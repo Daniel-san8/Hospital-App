@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -32,12 +32,18 @@ export class AgendarConsultaComponent {
     time: new FormControl(null, [Validators.required, this.validateHours()]),
     obs: new FormControl(null, [Validators.required]),
   });
-  constructor(private reqHttp: ReqHttpService, private router: Router) {}
+
+  @Output() dispareGetAppointments = new EventEmitter<void>();
+
+  constructor(private reqHttp: ReqHttpService) {}
   agendarConsulta() {
     const paylod: IPostConsulta = this.form.value;
 
     this.reqHttp.postAgendarConsulta({ ...paylod }).subscribe({
-      next: () => this.router.navigate(['/registerAdmin']),
+      next: () => {
+        this.dispareGetAppointments.emit();
+        this.form.reset();
+      },
       error: (err: any) => console.log('isso é um erro ' + JSON.stringify(err)),
     });
   }

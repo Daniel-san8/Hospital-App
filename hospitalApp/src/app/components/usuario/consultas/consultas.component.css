@@ -1,7 +1,6 @@
 .consultasGroup {
-  background: #2363571C;
+  background: #2363571c;
   width: 528px;
-  height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,7 +15,6 @@
 .consulta {
   display: flex;
   justify-content: space-between;
-  font-size: 30px;
 }
 
 .group-icon {
@@ -30,6 +28,20 @@
 
 .doctor-date {
   display: flex;
-  gap: 35px;
+  gap: 10px;
   padding-bottom: 15px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.speciality {
+  display: flex;
+  gap: 15px;
 }
