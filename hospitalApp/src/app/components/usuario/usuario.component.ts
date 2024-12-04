@@ -5,6 +5,7 @@ import { AgendarConsultaComponent } from './agendar-consulta/agendar-consulta.co
 import { ReqHttpService } from '../../services/req-http.service';
 import { IListAppointments } from '../../models/listAppointments.interface';
 import { IUser } from '../../models/user.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuario',
@@ -16,14 +17,17 @@ import { IUser } from '../../models/user.interface';
 export class UsuarioComponent implements AfterViewInit {
   listAppointments: IListAppointments[] = [];
 
-  constructor(private reqHttp: ReqHttpService) {}
+  constructor(private reqHttp: ReqHttpService, private router: Router) {}
 
   getAppointments() {
     this.reqHttp.getConsultas().subscribe({
       next: (value: IListAppointments[]) => {
         this.listAppointments = value;
       },
-      error: (err: any) => console.log(err),
+      error: (err: any) => {
+        console.log(err);
+        this.router.navigate(['/login']);
+      },
     });
   }
 

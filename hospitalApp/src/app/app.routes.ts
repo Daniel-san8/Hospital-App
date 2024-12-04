@@ -4,7 +4,8 @@ import { HomeComponent } from './components/home/home.component';
 import { CadastrarComponent } from './components/cadastrar/cadastrar.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { CreateDoctorComponent } from './components/create-doctor/create-doctor.component';
-import { hospitalGuard } from './guards/hospital.guard';
+import { doctorGuard } from './guards/doctor.guard';
+import { usuarioGuard } from './guards/usuario.guard';
 
 export const routes: Routes = [
   {
@@ -22,6 +23,7 @@ export const routes: Routes = [
   {
     path: 'usuario',
     component: UsuarioComponent,
+    canActivate: [usuarioGuard],
   },
   {
     path: 'register-doctor',
@@ -30,6 +32,6 @@ export const routes: Routes = [
   {
     path: 'doctor',
     component: UsuarioComponent,
-    canActivate: [hospitalGuard],
+    canActivate: [doctorGuard],
   },
 ];
