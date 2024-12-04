@@ -29,6 +29,10 @@
           <span>Especialidade: {{ appointment.specialty }}</span>
 
           <span>Agendado para: {{ appointment.date | agendamento }}</span>
+          <span
+            >Status da consulta:
+            {{ appointment.status | statusAppointment }}</span
+          >
         </div>
       </ng-container>
     </div>

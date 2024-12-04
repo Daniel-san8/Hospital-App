@@ -1,0 +1,51 @@
+.consultasGroup {
+  background: #2363571c;
+  width: 528px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+  margin: 3rem auto;
+}
+
+.p-consultas {
+  padding: 25px;
+  font-size: 35px;
+}
+
+.consulta {
+  display: flex;
+  justify-content: space-between;
+}
+
+.group-icon {
+  display: flex;
+  gap: 15px;
+
+  span {
+    cursor: pointer;
+    background-color: gray;
+    padding: 10px;
+  }
+}
+
+.doctor-date {
+  display: flex;
+  gap: 10px;
+  padding-bottom: 15px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.speciality {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}

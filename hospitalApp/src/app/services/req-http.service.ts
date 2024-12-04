@@ -37,7 +37,7 @@ export class ReqHttpService {
   }
 
   putConsultas(paylod: IPutConsulta, idAppointment: string) {
-    return this.http.put<any>(
+    return this.http.put<null>(
       `${this.baseUrl}/appointments/${idAppointment}`,
       paylod
     );
@@ -45,5 +45,18 @@ export class ReqHttpService {
 
   getUsuarios() {
     return this.http.get<IUser[]>(`${this.baseUrl}/users`);
+  }
+
+  putCancelAppointment(payload: any, idAppointment: string) {
+    return this.http.put<any>(
+      `${this.baseUrl}/cancel/${idAppointment}`,
+      payload
+    );
+  }
+  putDoneAppointment(payload: any, idAppointment: string) {
+    return this.http.put<any>(
+      `${this.baseUrl}/cancel/${idAppointment}`,
+      payload
+    );
   }
 }

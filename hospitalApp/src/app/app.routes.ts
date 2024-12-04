@@ -6,6 +6,7 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
 import { CreateDoctorComponent } from './components/create-doctor/create-doctor.component';
 import { doctorGuard } from './guards/doctor.guard';
 import { usuarioGuard } from './guards/usuario.guard';
+import { PageDoctorComponent } from './components/page-doctor/page-doctor.component';
 
 export const routes: Routes = [
   {
@@ -31,7 +32,7 @@ export const routes: Routes = [
   },
   {
     path: 'doctor',
-    component: UsuarioComponent,
+    component: PageDoctorComponent,
     canActivate: [doctorGuard],
   },
 ];

@@ -1,1 +1,32 @@
-<p>page-doctor works!</p>
+<app-header></app-header>
+<div class="consultasGroup">
+  @if (appointmentsDoctor.length === 0) {
+  <p class="p-consultas">Sem consultas</p>
+  }@else {
+  <p class="p-consultas">Próximas consultas</p>
+  }
+  <div class="consulta">
+    <div class="group">
+      <ng-container *ngFor="let appointment of appointmentsDoctor">
+        <div class="speciality">
+          <span>Doutor(a): {{ appointment.doctor }}</span>
+
+          <div class="group-icon">
+            <span (click)="cancelarConsulta(appointment.userId)">Cancelar </span
+            ><span (click)="concluirConsulta(appointment.userId)"
+              >Concluir Consulta
+            </span>
+          </div>
+        </div>
+
+        <div class="doctor-date">
+          <span>Especialidade: {{ appointment.specialty }}</span>
+
+          <span>Agendado para: {{ appointment.date | agendamento }}</span>
+          <span>Horário : {{ appointment.time }}</span>
+          <span>Status: {{ appointment.status }}</span>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

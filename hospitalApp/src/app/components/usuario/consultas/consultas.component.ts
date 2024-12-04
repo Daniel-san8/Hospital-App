@@ -4,11 +4,17 @@ import { NgFor } from '@angular/common';
 import { ReqHttpService } from '../../../services/req-http.service';
 import { AgendamentoPipe } from '../../../pipes/agendamento.pipe';
 import { ModalConsultaComponent } from '../modal-consulta/modal-consulta.component';
+import { StatusAppointmentPipe } from '../../../pipes/status-appointment.pipe';
 
 @Component({
   selector: 'app-consultas',
   standalone: true,
-  imports: [NgFor, AgendamentoPipe, ModalConsultaComponent],
+  imports: [
+    NgFor,
+    AgendamentoPipe,
+    ModalConsultaComponent,
+    StatusAppointmentPipe,
+  ],
   templateUrl: './consultas.component.html',
   styleUrl: './consultas.component.css',
 })
