@@ -2,9 +2,6 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f6f6f6;
   margin: 0;
-  justify-content: center;
-  align-items: center;
-  /* height: 100vh; */
 }
 
 header {
@@ -30,7 +27,10 @@ header {
   padding: 20px;
   width: 50%;
   text-align: center;
-  margin-top: 3rem;
+  margin: 3rem 0 0 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .account-form {
   display: flex;
