@@ -17,7 +17,7 @@
         <div class="doctor-date">
           <span>Especialidade: {{ appointment.specialty }}</span>
 
-          <span>Agendado para: {{ appointment.date }}</span>
+          <span>Agendado para: {{ appointment.date | agendamento }}</span>
         </div>
       </ng-container>
     </div>
