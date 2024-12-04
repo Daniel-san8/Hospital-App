@@ -7,6 +7,7 @@ import { IAuthLogin } from '../models/authLogin.interface';
 import { IPostConsulta } from '../models/postConsulta.interface';
 import { IListAppointments } from '../models/listAppointments.interface';
 import { IPutConsulta } from '../models/putConsulta.interface';
+import { IUser } from '../models/user.interface';
 export interface ILoginResponse {
   token: string;
 }
@@ -44,5 +45,9 @@ export class ReqHttpService {
       `${this.baseUrl}/appointments/${idAppointment}`,
       paylod
     );
+  }
+
+  getUsuarios() {
+    return this.http.get<IUser[]>(`${this.baseUrl}/users`);
   }
 }

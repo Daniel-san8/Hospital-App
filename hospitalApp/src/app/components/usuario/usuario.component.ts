@@ -4,6 +4,7 @@ import { ConsultasComponent } from './consultas/consultas.component';
 import { AgendarConsultaComponent } from './agendar-consulta/agendar-consulta.component';
 import { ReqHttpService } from '../../services/req-http.service';
 import { IListAppointments } from '../../models/listAppointments.interface';
+import { IUser } from '../../models/user.interface';
 
 @Component({
   selector: 'app-usuario',
@@ -15,10 +16,10 @@ import { IListAppointments } from '../../models/listAppointments.interface';
 export class UsuarioComponent implements OnInit {
   listAppointments: IListAppointments[] = [];
 
-  constructor(private http: ReqHttpService) {}
+  constructor(private reqHttp: ReqHttpService) {}
 
   getAppointments() {
-    this.http.getConsultas().subscribe({
+    this.reqHttp.getConsultas().subscribe({
       next: (value: IListAppointments[]) => {
         this.listAppointments = value;
       },
@@ -28,5 +29,8 @@ export class UsuarioComponent implements OnInit {
 
   ngOnInit() {
     this.getAppointments();
+    this.reqHttp
+      .getUsuarios()
+      .subscribe((value: IUser[]) => console.log(value));
   }
 }
