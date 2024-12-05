@@ -40,13 +40,15 @@ export class AgendarConsultaComponent {
     const paylod: IPostConsulta = this.form.value;
 
     this.reqHttp.postAgendarConsulta({ ...paylod }).subscribe({
+      next: () => {
+        this.dispareGetAppointments.emit();
+        this.form.reset();
+      },
       error: (err: any) => {
         this.isLoading = false;
         console.log(err);
       },
       complete: () => {
-        this.dispareGetAppointments.emit();
-        this.form.reset();
         this.isLoading = false;
       },
     });

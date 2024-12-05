@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { HeaderComponent } from '../usuario/header/header.component';
 import { ReqHttpService } from '../../services/req-http.service';
 import { IListAppointments } from '../../models/listAppointments.interface';
@@ -18,6 +18,10 @@ export class PageDoctorComponent implements OnInit {
 
   constructor(private reqHttp: ReqHttpService) {}
 
+  ngOnInit() {
+    this.buscarConsultas();
+  }
+
   buscarConsultas() {
     this.reqHttp.getConsultas().subscribe({
       next: (value: IListAppointments[]) => {
@@ -30,15 +34,10 @@ export class PageDoctorComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.buscarConsultas();
-  }
-
   cancelarConsulta(idAppointment: string) {
     this.reqHttp.putCancelAppointment(idAppointment).subscribe({
-      next: (value: any) => {
+      next: () => {
         this.buscarConsultas();
-        console.log(value);
       },
       error: (err: any) => console.log(err),
     });
@@ -46,11 +45,24 @@ export class PageDoctorComponent implements OnInit {
 
   concluirConsulta(idAppointment: string) {
     this.reqHttp.putDoneAppointment(idAppointment).subscribe({
-      next: (value: any) => {
+      next: () => {
         this.buscarConsultas();
-        console.log(value);
       },
       error: (err: any) => console.log(err),
     });
+  }
+
+  limparConsultas() {
+    const clearList = this.appointmentsDoctor.filter(
+      (appointment) => appointment.status !== 'SCHEDULED'
+    );
+
+    clearList.forEach((appointment) => {
+      this.reqHttp.deleteConsultas(appointment.id).subscribe({
+        error: (err: any) => console.log(err),
+      });
+    });
+
+    this.buscarConsultas();
   }
 }

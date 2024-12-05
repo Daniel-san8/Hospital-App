@@ -49,3 +49,11 @@
   gap: 15px;
   align-items: center;
 }
+
+.buttonClear {
+  padding: 2rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
