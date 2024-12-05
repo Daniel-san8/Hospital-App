@@ -10,7 +10,7 @@ export class StatusAppointmentPipe implements PipeTransform {
     switch (value) {
       case 'SCHEDULED':
         return (status = 'Agendado');
-      case 'CANCEL':
+      case 'CANCELED':
         return (status = 'Cancelado');
       case 'DONE':
         return (status = 'Concluída');

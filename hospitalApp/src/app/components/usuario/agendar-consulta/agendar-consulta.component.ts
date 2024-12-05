@@ -53,7 +53,7 @@ export class AgendarConsultaComponent {
   }
 
   validateHours(): ValidatorFn {
-    const formatTime = /^\d{2}:\d{2}$/;
+    const formatTime = /^(2[0-3]|[01][0-9]):([0-5][0-9])$/;
     return (control: AbstractControl): ValidationErrors | null => {
       if (formatTime.test(control.value)) {
         return null;

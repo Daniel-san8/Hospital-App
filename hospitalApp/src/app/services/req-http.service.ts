@@ -47,17 +47,17 @@ export class ReqHttpService {
     return this.http.get<IUser[]>(`${this.baseUrl}/users`);
   }
 
-  putCancelAppointment(payload: any, idAppointment: string) {
-    return this.http.put<any>(
-      `${this.baseUrl}/cancel/${idAppointment}`,
-      payload
+  putCancelAppointment(idAppointment: string) {
+    return this.http.put<null>(
+      `${this.baseUrl}/appointments/cancel/${idAppointment}`,
+      {}
     );
   }
 
-  putDoneAppointment(payload: any, idAppointment: string) {
-    return this.http.put<any>(
-      `${this.baseUrl}/cancel/${idAppointment}`,
-      payload
+  putDoneAppointment(idAppointment: string) {
+    return this.http.put<null>(
+      `${this.baseUrl}/appointments/done/${idAppointment}`,
+      {}
     );
   }
 }

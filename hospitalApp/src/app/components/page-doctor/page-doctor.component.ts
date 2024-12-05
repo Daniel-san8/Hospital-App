@@ -35,8 +35,7 @@ export class PageDoctorComponent implements OnInit {
   }
 
   cancelarConsulta(idAppointment: string) {
-    const payload = { id: idAppointment };
-    this.reqHttp.putCancelAppointment(payload, idAppointment).subscribe({
+    this.reqHttp.putCancelAppointment(idAppointment).subscribe({
       next: (value: any) => {
         this.buscarConsultas();
         console.log(value);
@@ -44,9 +43,9 @@ export class PageDoctorComponent implements OnInit {
       error: (err: any) => console.log(err),
     });
   }
+
   concluirConsulta(idAppointment: string) {
-    const payload = { id: idAppointment };
-    this.reqHttp.putDoneAppointment(payload, idAppointment).subscribe({
+    this.reqHttp.putDoneAppointment(idAppointment).subscribe({
       next: (value: any) => {
         this.buscarConsultas();
         console.log(value);
