@@ -9,7 +9,6 @@ export const usuarioGuard: CanActivateFn = (route) => {
   const role = cookies.get('ROLE');
 
   if (!token || role !== ERole.USER) {
-    console.log('mandou pra login');
     return createUrlTreeFromSnapshot(route, ['/login']);
   }
   return true;

@@ -12,6 +12,9 @@ import { IAuthLogin } from '../../models/authLogin.interface';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { ERole } from '../../models/role.enum';
+import { chaveSecreta } from '../../key';
+import * as CryptoJS from 'crypto-js';
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -43,7 +46,12 @@ export class LoginComponent {
 
     this.reqHttp.login(this.form.value).subscribe({
       next: (value: IAuthLogin) => {
-        this.cookies.set('token', value.token, {
+        const cookieEncrypted = CryptoJS.AES.encrypt(
+          value.token,
+          chaveSecreta
+        ).toString();
+
+        this.cookies.set('token', cookieEncrypted, {
           secure: true,
           expires: expireToken,
           sameSite: 'Strict',

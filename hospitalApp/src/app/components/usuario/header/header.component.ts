@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
     this.cookies.delete('ROLE');
     localStorage.removeItem('nameUser');
   }
-  userName?: string;
+  userName = '';
 
   ngOnInit() {
     this.userName = localStorage.getItem('nameUser') ?? 'USER';
