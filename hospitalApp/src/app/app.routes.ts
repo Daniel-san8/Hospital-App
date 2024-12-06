@@ -1,38 +1,54 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
-import { CadastrarComponent } from './components/cadastrar/cadastrar.component';
-import { UsuarioComponent } from './components/usuario/usuario.component';
-import { CreateDoctorComponent } from './components/create-doctor/create-doctor.component';
-import { doctorGuard } from './guards/doctor.guard';
-import { usuarioGuard } from './guards/usuario.guard';
-import { PageDoctorComponent } from './components/page-doctor/page-doctor.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 export const routes: Routes = [
   {
     path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
+  {
+    path: 'home',
     component: HomeComponent,
   },
+
   {
     path: 'login',
-    component: LoginComponent,
+    loadChildren: () =>
+      import('./routes-module/auth.routes').then((rota) => rota.authRoutes),
   },
+
   {
     path: 'cadastrar',
-    component: CadastrarComponent,
+    loadChildren: () =>
+      import('./routes-module/cadastrar.routes').then(
+        (rota) => rota.cadastrarRoute
+      ),
   },
-  {
-    path: 'usuario',
-    component: UsuarioComponent,
-    canActivate: [usuarioGuard],
-  },
+
   {
     path: 'register-doctor',
-    component: CreateDoctorComponent,
+    loadChildren: () =>
+      import('./routes-module/register-doctor.routes').then(
+        (rota) => rota.registerDoctorRoutes
+      ),
   },
   {
     path: 'doctor',
-    component: PageDoctorComponent,
-    canActivate: [doctorGuard],
+    loadChildren: () =>
+      import('./routes-module/doctor.routes').then((rota) => rota.doctorRoutes),
+  },
+  {
+    path: 'usuario',
+    loadChildren: () =>
+      import('./routes-module/user.routes').then(
+        (rota) => rota.componentsRoutes
+      ),
+  },
+
+  {
+    path: '**',
+    component: NotFoundComponent,
   },
 ];
